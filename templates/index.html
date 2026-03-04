@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Post Scraper</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📘 Facebook Post Scraper</h1>
+            <p>Extract posts and comments from any public Facebook post</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <input 
+                    type="url" 
+                    id="urlInput" 
+                    placeholder="Enter Facebook post URL (e.g., https://web.facebook.com/.../posts/...)"
+                    required
+                >
+                <button id="scrapeBtn" onclick="startScraping()">🚀 Start Scraping</button>
+            </div>
+
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="status" id="status">Initializing...</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="progress-percentage" id="progressPercentage">0%</div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <h2>📊 Scraping Results</h2>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Post Text</div>
+                        <div class="stat-value" id="postTextPreview">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Comments Found</div>
+                        <div class="stat-value" id="commentCount">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Author</div>
+                        <div class="stat-value" id="postAuthor">-</div>
+                    </div>
+                </div>
+
+                <div class="post-details">
+                    <h3>📝 Post Content</h3>
+                    <div class="post-content" id="postContent"></div>
+                    
+                    <h3>💬 Comments Preview</h3>
+                    <div class="comments-list" id="commentsList"></div>
+                </div>
+
+                <button id="downloadBtn" onclick="downloadData()">💾 Download JSON</button>
+            </div>
+
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-message" id="errorMessage"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>⚠️ Make sure the Facebook post is public and accessible</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
